@@ -9,11 +9,8 @@ public class Utilisateur {
 
     @Id
     private long userName;
-
     private String password;
-
     private String name;
-
     private String firstName;
 
     public Utilisateur() {}

@@ -11,9 +11,7 @@ public class Habitat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long habitatId;
-
     private String name;
-
     private String commentaireHabitat;
 
     public Habitat() {}

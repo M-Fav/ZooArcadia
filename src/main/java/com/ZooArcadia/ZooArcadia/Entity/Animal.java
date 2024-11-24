@@ -10,33 +10,31 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String race;
+    private long animalId;
+    private String etat;
     private String name;
 
-    public Animal() {
+    public Animal() {}
 
-    }
-
-    public Animal(String race, String name) {
-        this.race = race;
+    public Animal(String etat, String name) {
+        this.etat = etat;
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
+    public Long getAnimalId() {
+        return animalId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setAnimalId(Long animalId) {
+        this.animalId = animalId;
     }
 
-    public String getRace() {
-        return race;
+    public String getEtat() {
+        return etat;
     }
 
-    public void setRace(String race) {
-        this.race = race;
+    public void setEtat(String etat) {
+        this.etat = etat;
     }
 
     public String getName() {

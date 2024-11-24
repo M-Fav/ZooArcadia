@@ -22,8 +22,8 @@ public class AnimalController {
 
     // Endpoint pour récupérer un animal par ID
     @GetMapping("/{id}")
-    public Animal getAnimalById(@PathVariable Long id) {
-        return animalRepository.findById(id).orElseThrow(() -> new RuntimeException("Animal non trouvé !"));
+    public Animal getAnimalById(@PathVariable Long animalId) {
+        return animalRepository.findById(animalId).orElseThrow(() -> new RuntimeException("Animal non trouvé !"));
     }
 
     // Endpoint pour ajouter un nouvel animal
@@ -34,24 +34,24 @@ public class AnimalController {
 
     // Endpoint pour mettre à jour un animal
     @PutMapping("/{id}")
-    public Animal updateAnimal(@PathVariable Long id, @RequestBody Animal updatedAnimal) {
-        return animalRepository.findById(id).map(animal -> {
+    public Animal updateAnimal(@PathVariable Long animalId, @RequestBody Animal updatedAnimal) {
+        return animalRepository.findById(animalId).map(animal -> {
             animal.setName(updatedAnimal.getName());
-            animal.setRace(updatedAnimal.getRace());
+            animal.setEtat(updatedAnimal.getEtat());
             return animalRepository.save(animal);
         }).orElseThrow(() -> new RuntimeException("Animal non trouvé pour mise à jour !"));
     }
 
     // Endpoint pour supprimer un animal
     @DeleteMapping("/{id}")
-    public String deleteAnimal(@PathVariable Long id) {
-        animalRepository.deleteById(id);
+    public String deleteAnimal(@PathVariable Long animalId) {
+        animalRepository.deleteById(animalId);
         return "Animal supprimé avec succès !";
     }
 
     @GetMapping("/test")
     public String test() {
-        return "L'API fonctionne !";
+        return "l'accès Animaux fonctionne !";
     }
 
 }

@@ -1,10 +1,8 @@
 package com.ZooArcadia.ZooArcadia.Controller;
 
-import com.ZooArcadia.ZooArcadia.Entity.Animal;
 import com.ZooArcadia.ZooArcadia.Entity.Habitat;
 import com.ZooArcadia.ZooArcadia.Repository.HabitatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +16,7 @@ public class HabitatController {
 
     @GetMapping
     public List<Habitat> getAllHabitats() {
+
         return habitatRepository.findAll();
     }
 

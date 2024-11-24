@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Repository
+@RestController
+@RequestMapping("/habitats")
 public class HabitatController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class HabitatController {
         return habitatRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{habitatId}")
     public Habitat getHabitatById(@PathVariable Long habitatId) {
         return habitatRepository.findById(habitatId).orElseThrow(() -> new RuntimeException("Habitat non trouvé !"));
     }
@@ -31,7 +32,7 @@ public class HabitatController {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/{habitatId}")
     public Habitat updateHabitat(@PathVariable Long habitatId, @RequestBody Habitat updatedHabitat) {
         return habitatRepository.findById(habitatId).map(habitat -> {
             habitat.setName(updatedHabitat.getName());
@@ -40,7 +41,7 @@ public class HabitatController {
         }).orElseThrow(() -> new RuntimeException("Habitat non trouvé pour mise à jour !"));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{habitatId}")
     public String deleteHabitat(@PathVariable Long habitatId) {
         habitatRepository.deleteById(habitatId);
         return "Habitat supprimé avec succès !";

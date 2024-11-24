@@ -21,7 +21,7 @@ public class AnimalController {
     }
 
     // Endpoint pour récupérer un animal par ID
-    @GetMapping("/{id}")
+    @GetMapping("/{animalId}")
     public Animal getAnimalById(@PathVariable Long animalId) {
         return animalRepository.findById(animalId).orElseThrow(() -> new RuntimeException("Animal non trouvé !"));
     }
@@ -33,7 +33,7 @@ public class AnimalController {
     }
 
     // Endpoint pour mettre à jour un animal
-    @PutMapping("/{id}")
+    @PutMapping("/{animalId}")
     public Animal updateAnimal(@PathVariable Long animalId, @RequestBody Animal updatedAnimal) {
         return animalRepository.findById(animalId).map(animal -> {
             animal.setName(updatedAnimal.getName());
@@ -43,7 +43,7 @@ public class AnimalController {
     }
 
     // Endpoint pour supprimer un animal
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{animalId}")
     public String deleteAnimal(@PathVariable Long animalId) {
         animalRepository.deleteById(animalId);
         return "Animal supprimé avec succès !";
